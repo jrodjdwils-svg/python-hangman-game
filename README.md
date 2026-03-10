@@ -5,3 +5,5 @@ will be able to make guesses about the letters.
 It will show any wrong guesses as well as show the letters you guess correctly.
 When you guess a wrong letter a peice of the stickman will be drawn.
 If you guess all the letters you win and then you are asked if you want to play again.
+I also added an option for custom words so instead of picking a category the user
+can choose to enter their own word. This could be fun to play with others.
