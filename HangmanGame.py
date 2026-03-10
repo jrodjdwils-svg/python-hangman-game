@@ -2,10 +2,9 @@ from tkinter import *
 import tkinter.messagebox
 import random
 import tkinter.simpledialog
-
+window = Tk()
 class HangmanGame:
     def __init__(self):
-        window = Tk()
         window.title("Hangman Game")
         #creates the lists for the categories of words
         self.sports = ["basketball", "baseball", "football", "soccer", "tennis"]
@@ -28,6 +27,10 @@ class HangmanGame:
         rbCelebrities = Radiobutton(frame1, text = "Celebrities", variable = self.v1, value = 2, command = self.processRadioButton)
         rbAnimals = Radiobutton(frame1, text = "Animals", variable = self.v1, value = 3, command = self.processRadioButton)
         rbFood = Radiobutton(frame1, text = "Food", variable = self.v1, value = 4, command = self.processRadioButton)
+        
+        #creates a radiobutton for the user to enter their own custom word
+        rbCustom = Radiobutton(frame1, text = "Custom", variable = self.v1, value = 5, command = self.processRadioButton)
+        
         #creates a button that will start the game
         startButton = Button(frame1, text = "Start Game", command = self.startGame)
         
@@ -38,7 +41,8 @@ class HangmanGame:
         rbCelebrities.grid(row = 1, column = 3)
         rbAnimals.grid(row = 1, column = 4)
         rbFood.grid(row = 1, column = 5)
-        startButton.grid(row = 1, column = 6)
+        rbCustom.grid(row = 1, column = 6)
+        startButton.grid(row = 1, column = 7)
 
         #creates a frame for the canvas
         frame2 = Frame(window)
@@ -94,6 +98,8 @@ class HangmanGame:
             self.category = "Animals"
         elif self.v1.get() == 4:
             self.category = "Food"
+        elif self.v1.get() == 5:
+            self.category = "Custom"
         
         
 
@@ -156,6 +162,9 @@ class HangmanGame:
             word = self.animals[num]
         elif self.category == "Food":
             word = self.food[num]
+        #Allows the user to enter a custom word
+        elif self.category == "Custom:
+            word = tkinter.simpledialog.askstring("Custom word", "Enter your custom word", parent=window)
       
         return word
 
@@ -358,6 +367,7 @@ class HangmanGame:
             
                 a += move           
                 x+= 1
+
 
 
 
